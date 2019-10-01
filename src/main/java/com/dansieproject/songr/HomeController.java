@@ -16,11 +16,14 @@ public class HomeController {
         return "index";
     }
 
+    //    public Album(String title, String artist, int songCount, int lengthSeconds, String imageUrl) {
+
     @GetMapping("/album")
     public String getTheAlbums(Model m){
         Album[] albums = new Album[]{
-                new Album()...,
-                new Album()...
+                new Album("Power In Numbers", "Jurassic 5", 17, (56*60 + 11), "https://upload.wikimedia.org/wikipedia/en/e/e8/Power_in_Numbers.jpg"),
+                new Album("The Strange Case of...", "Halestorm", 16, (40*60+56), "https://upload.wikimedia.org/wikipedia/en/1/15/Halsetrom_Strange_Case.jpg"),
+                new Album("Al Green's Greatest Hits", "Al Green", 10, (36*60 + 34), "https://upload.wikimedia.org/wikipedia/en/b/b3/Al_Green%27s_Greatest_Hits_%28Al_Green_album_-_cover_art%29.jpg")
         };
         m.addAttribute("albums", albums);
         return "album";
