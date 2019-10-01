@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Album List</title>
+    <link href="/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h4><a href="/">Home</a></h4>
+    </header>
+    <main>
+        <h1>Album List</h1>
+        <ul>
+            <li th:each="album : ${albums}" th:text="${album}"></li>
+        </ul>
+    </main>
+</body>
+</html>
