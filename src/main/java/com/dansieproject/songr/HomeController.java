@@ -11,9 +11,24 @@ public class HomeController {
     //another way to handle params
 //    public String getHome(@RequestParam(required = false, defaultValue = "user") String username, Model m){
 
-    //Model m is for passing data to the view (not a real model (wanna be model (gross (but is a HasMap, so okay))))
     @GetMapping("/")
-    public String getHome(String username, Model m){
+    public String getHome(Model m){
+        return "index";
+    }
+
+    @GetMapping("/album")
+    public String getTheAlbums(Model m){
+        Album[] albums = new Album[]{
+                new Album()...,
+                new Album()...
+        };
+        m.addAttribute("albums", albums);
+        return "album";
+    }
+
+    //Model m is for passing data to the view (not a real model (wanna be model (gross (but is a HasMap, so okay))))
+    @GetMapping("/hello")
+    public String getHello(String username, Model m){
         System.out.println(username);
         m.addAttribute("potato", "russet");
 
@@ -25,15 +40,16 @@ public class HomeController {
     @GetMapping("/hello/{username}")
     //username is from the path
     public String getHelloRoute(@PathVariable String username, Model m){
+        m.addAttribute("potato", "russet");
         m.addAttribute("username", username);
         return "home";
     }
 
-    @GetMapping("/emotions")
-    public String getTheEmotions(Model m){
-        Emotion[] feelings = new Emotion[]{new Emotion("uncertainty", 20, "java hurt brain")};
-        //fell behind here
-//        m.addAttribute(...)
-        return "emotions";
+    @GetMapping("/capitalize/{username}")
+    public String getCapRoute(@PathVariable String username, Model m){
+        username = username.toUpperCase();
+        m.addAttribute("potato", "russet");
+        m.addAttribute("username", username);
+        return "home";
     }
 }

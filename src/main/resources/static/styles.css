@@ -1,0 +1,8 @@
+* {
+  background-color: bisque;
+}
+#cont {
+  border: 1px solid black;
+  background-color: green;
+  font: white;
+}
