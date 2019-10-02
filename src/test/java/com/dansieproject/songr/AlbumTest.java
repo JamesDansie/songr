@@ -1,5 +1,6 @@
 package com.dansieproject.songr;
 
+import com.dansieproject.songr.models.Album;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -15,7 +15,9 @@ body {
 ul {
   list-style-type: none
 }
-
-h1, h4, p, li {
-  background-color:rgba(0, 0, 0, 0.315);
+.inputForm{
+  display: block;
+}
+h1, h4, p, li, form {
+  background-color:rgba(0, 0, 0, 0.5);
 }

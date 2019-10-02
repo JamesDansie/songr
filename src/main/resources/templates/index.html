@@ -6,8 +6,26 @@
     <link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
 <body>
-    <h1>The best music app ever</h1>
-    <p>This app is as awesome as Napster, with the fidelity of Spotify, and the sketchiness of uTorrent.</p>
-    <p id="cont"><a href = "./album" >Go to Albums</a></p>
+    <header>
+
+    </header>
+    <main>
+        <h1>The best music app ever</h1>
+        <p>This app is as awesome as Napster, with the fidelity of Spotify, and the sketchiness of uTorrent.</p>
+        <p id="cont"><a href = "./album" >Go to Albums</a></p>
+
+        <form action="/album" method="POST">
+            <div class="inputForm"><input type="text" name="albumName">Album Name</div>
+            <div class="inputForm"></div><input type="text" name="artistName">Artist Name</div>
+            <div class="inputForm"></div><input type="number" name="songCount">Song Count</div>
+            <div class="inputForm"></div><input type="number" name=albumLengthMinutes>Album Playtime(minutes)</div>
+            <div class="inputForm"></div><input type="number" name="albumLengthSeconds">Album Playtime(seconds)</div>
+            <div class="inputForm"></div><input type="url" name="artUrl">Url for album artwork</div>
+            <div class="inputForm"></div><input type="submit" value="add album"></div>
+        </form>
+    </main>
+    <footer>
+
+    </footer>
 </body>
 </html>
