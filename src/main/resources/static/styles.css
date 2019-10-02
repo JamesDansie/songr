@@ -12,12 +12,16 @@ body {
   display: inline-block;
   border: 1px solid black;
 }
-ul {
-  list-style-type: none
+img{
+  height: 100px;
+  width: 100px;
 }
 .inputForm{
   display: block;
 }
-h1, h4, p, li, form {
+header, main, footer {
   background-color:rgba(0, 0, 0, 0.5);
+}
+ul {
+  list-style-type: none
 }

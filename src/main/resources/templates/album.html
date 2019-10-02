@@ -11,9 +11,21 @@
     </header>
     <main>
         <h1>Album List</h1>
-        <ul>
-            <li th:each="album : ${albums}" th:text="${album}"></li>
-        </ul>
+
+        <table>
+            <th:block th:each="album : ${albums}">
+                <tr th:class="${album.title}">
+                    <td th:text="${album}" ></td>
+                    <td><img th:src="${album.imageUrl}"></td>
+                    <td>X</td>
+                    <!-- <script>
+                        Document.getElementbyClass("${album.title}")[0].addEventListner("click", () => {
+                            console.log(this.className)
+                        })
+                    </script> -->
+                </tr>
+            </th:block>
+        </table>
     </main>
 </body>
 </html>

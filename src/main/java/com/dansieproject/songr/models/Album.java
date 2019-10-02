@@ -11,11 +11,11 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    String title;
-    String artist;
-    int songCount;
-    int lengthSeconds;
-    String imageUrl;
+    public String title;
+    public String artist;
+    public int songCount;
+    public int lengthSeconds;
+    public String imageUrl;
 
     public Album(){}
 
