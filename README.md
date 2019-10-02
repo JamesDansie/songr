@@ -1,9 +1,10 @@
 # Songr
 ### Author: James Dansie
-This is a site for loading and looking up your favorite albums. It is a Spring App built with Gradle, and jUnit4 tests. Additional "functionality" at /hello and /hello/{username}, and /capitalize/{username}.
+This is a site for loading and looking up your favorite albums. It is a Spring App built with Gradle, and jUnit4 tests. Additional "functionality" at /hello and /hello/{username}, and /capitalize/{username}. Albums are stored in a postGresSql server, and served up on the album page.
 
 # Gradle - Getting Started
-
+To run the server run `./gradlew bootrun`
+go to localhost:8080
 ### Reference Documentation
 For further reference, please consider the following sections:
 
