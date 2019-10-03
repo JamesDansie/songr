@@ -18,7 +18,7 @@
         </h1>
         <img th:src="${album.imageUrl}">
 
-        <form action="${'album/' + album.id}" method="POST">
+        <form th:action="${album.id}" method="POST">
             <div class="inputForm"><input type="text" name="songName">Song Name</div>
             <div class="inputForm"></div><input type="number" name="trackLengthSeconds">Song Length (seconds)</div>
             <div class="inputForm"></div><input type="number" name="trackNumber">Track Number</div>
