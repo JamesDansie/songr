@@ -12,11 +12,34 @@
     </header>
     <main>
         <h1>
-            <!-- <span th:if="${album != null}" th:text="${album.title}"></span>
-            <span th:unless="${album != null}">interchangable album cog.</span> -->
             <span th:text="${album.title}"></span>
         </h1>
         <img th:src="${album.imageUrl}">
+
+        <h3>
+            Song List
+        </h3>
+
+        <table>
+            <th:block th:each="song : ${songs}">
+                <tr>
+                    <th>Song Title</th>
+                    <th>Song Length (seconds)</th>
+                    <th>Track Number</th>
+                </tr>
+                <tr th:class="${song.title}">
+                    <td th:text="${song.title}" ></td>
+                    <td th:text="${song.lengthSeconds}" ></td>
+                    <td th:text="${song.trackNumber}"></td>
+                    <!-- <td>
+                        <form method="POST" th:action="${'album/' + album.id}/delete">
+                            <input type="hidden" th:value="${song.id}" name="id">
+                            <button>Delete Album</button>
+                        </form>
+                    </td> -->
+                </tr>
+            </th:block>
+        </table>
 
         <form th:action="${album.id}" method="POST">
             <div class="inputForm"><input type="text" name="songName">Song Name</div>
