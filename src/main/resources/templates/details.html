@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <link href="/styles.css" rel="stylesheet" />
+
+</head>
+<body>
+    <header>
+        <h4><a href="/">Home</a></h4>
+    </header>
+    <main>
+        <h1>
+            <span th:text="${album.title}"></span>
+        </h1>
+        <img th:src="${album.imageUrl}">
+
+        <h3>
+            Song List
+        </h3>
+
+        <table>
+            <tr>
+                <th>Song Title</th>
+                <th>Song Length (seconds)</th>
+                <th>Track Number</th>
+            </tr>
+            <th:block th:each="song : ${album.songs}">
+                <tr th:class="${song.title}">
+                    <td th:text="${song.title}" ></td>
+                    <td th:text="${song.lengthSeconds}" ></td>
+                    <td th:text="${song.trackNumber}"></td>
+                    <td>
+                        <form method="POST" th:action="${album.id + '/delete'}">
+                            <input type="hidden" th:value="${song.id}" name="songId">
+                            <button>Delete Song</button>
+                        </form>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+
+        <form th:action="${album.id}" method="POST">
+            <div class="inputForm"><input type="text" name="songName">Song Name</div>
+            <div class="inputForm"></div><input type="number" name="trackLengthSeconds">Song Length (seconds)</div>
+            <div class="inputForm"></div><input type="number" name="trackNumber">Track Number</div>
+            <input type="hidden" th:value="${album.id}" name="id">
+            <div class="inputForm"></div><input type="submit" value="add song"></div>
+        </form>
+    </main>
+    <footer>
+        smells of feet
+    </footer>
+</body>
+</html>

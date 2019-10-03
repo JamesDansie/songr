@@ -16,13 +16,13 @@
             <th:block th:each="album : ${albums}">
                 <tr th:class="${album.title}">
                     <td th:text="${album}" ></td>
-                    <td><img th:src="${album.imageUrl}"></td>
-                    <td>X</td>
-                    <!-- <script>
-                        Document.getElementbyClass("${album.title}")[0].addEventListner("click", () => {
-                            console.log(this.className)
-                        })
-                    </script> -->
+                    <td><a th:href="${'album/' + album.id}"><img th:src="${album.imageUrl}"></a></td>
+                    <td>
+                        <form method="POST" action="album/delete">
+                            <input type="hidden" th:value="${album.id}" name="id">
+                            <button>Delete Album</button>
+                        </form>
+                    </td>
                 </tr>
             </th:block>
         </table>

@@ -1,21 +1,50 @@
 package com.dansieproject.songr.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Album {
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    @Id
+    public long id;
 
-    public String title;
-    public String artist;
-    public int songCount;
-    public int lengthSeconds;
-    public String imageUrl;
+    @OneToMany(mappedBy = "album")
+    List<Song> songs;
+
+    protected String title;
+    protected String artist;
+    protected int songCount;
+    protected int lengthSeconds;
+    protected String imageUrl;
+
+    public long getId() {
+        return id;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public int getSongCount() {
+        return songCount;
+    }
+
+    public int getLengthSeconds() {
+        return lengthSeconds;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public String getTitle(){
+        return this.title;
+    }
 
     public Album(){}
 

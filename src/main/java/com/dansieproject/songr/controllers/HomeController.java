@@ -2,6 +2,8 @@ package com.dansieproject.songr.controllers;
 
 import com.dansieproject.songr.models.Album;
 import com.dansieproject.songr.models.AlbumRepository;
+import com.dansieproject.songr.models.Song;
+import com.dansieproject.songr.models.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,9 @@ public class HomeController {
     @Autowired
     AlbumRepository albumRepository;
 
+    @Autowired
+    SongRepository songRepository;
+
     //another way to handle params
 //    public String getHome(@RequestParam(required = false, defaultValue = "user") String username, Model m){
 
@@ -25,15 +30,8 @@ public class HomeController {
         return "index";
     }
 
-    //    public Album(String title, String artist, int songCount, int lengthSeconds, String imageUrl) {
-
     @GetMapping("/album")
     public String getTheAlbums(Model m){
-//        Album[] albums = new Album[]{
-//                new Album("Power In Numbers", "Jurassic 5", 17, (56*60 + 11), "https://upload.wikimedia.org/wikipedia/en/e/e8/Power_in_Numbers.jpg"),
-//                new Album("The Strange Case of...", "Halestorm", 16, (40*60+56), "https://upload.wikimedia.org/wikipedia/en/1/15/Halsetrom_Strange_Case.jpg"),
-//                new Album("Al Green's Greatest Hits", "Al Green", 10, (36*60 + 34), "https://upload.wikimedia.org/wikipedia/en/b/b3/Al_Green%27s_Greatest_Hits_%28Al_Green_album_-_cover_art%29.jpg")
-//        };
         List<Album> albums = albumRepository.findAll();
         m.addAttribute("albums", albums);
         return "album";
@@ -45,6 +43,42 @@ public class HomeController {
         albumRepository.save(allie);
 
         return new RedirectView("/album");
+    }
+
+    @PostMapping("/album/delete")
+    public RedirectView deleteTheAlbum(long id){
+        albumRepository.deleteById(id);
+        return new RedirectView("/album");
+    }
+
+    @GetMapping("/album/{albumId}")
+    public String getAlbumDetails(Model m,@PathVariable long albumId){
+//        Album allie = albumRepository.findById(albumId);
+//        m.addAttribute("album", albumRepository.findById(albumId).get());
+        List<Song> songs = songRepository.findAll();
+        m.addAttribute("album", albumRepository.getOne(albumId));
+        m.addAttribute("songs", songs);
+        return "details";
+    }
+
+//    public Song(Album album, String title, int lengthSeconds, int trackNumber) {
+
+
+    @PostMapping("/album/{albumId}")
+    public RedirectView makeSong(Model m, @PathVariable long albumId, String songName, int trackLengthSeconds, int trackNumber){
+        Album allie = albumRepository.getOne(albumId);
+        Song newSong = new Song(allie, songName, trackLengthSeconds, trackNumber);
+        newSong.setAlbum(allie);
+        songRepository.save(newSong);
+
+        return new RedirectView("/album/{albumId}");
+    }
+
+    @PostMapping("/album/{albumId}/delete")
+    //add the delete form info from songs
+    public RedirectView deleteSong(Model m, @PathVariable long albumId, long songId){
+        songRepository.deleteById(songId);
+        return new RedirectView("/album/{albumId}");
     }
 
     //Model m is for passing data to the view (not a real model (wanna be model (gross (but is a HasMap, so okay))))
