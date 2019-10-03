@@ -74,6 +74,13 @@ public class HomeController {
         return new RedirectView("/album/{albumId}");
     }
 
+    @PostMapping("/album/{albumId}/delete")
+    //add the delete form info from songs
+    public RedirectView deleteSong(Model m, @PathVariable long albumId, long songId){
+        songRepository.deleteById(songId);
+        return new RedirectView("/album/{albumId}");
+    }
+
     //Model m is for passing data to the view (not a real model (wanna be model (gross (but is a HasMap, so okay))))
     @GetMapping("/hello")
     public String getHello(String username, Model m){

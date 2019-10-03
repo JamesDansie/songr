@@ -21,22 +21,22 @@
         </h3>
 
         <table>
+            <tr>
+                <th>Song Title</th>
+                <th>Song Length (seconds)</th>
+                <th>Track Number</th>
+            </tr>
             <th:block th:each="song : ${songs}">
-                <tr>
-                    <th>Song Title</th>
-                    <th>Song Length (seconds)</th>
-                    <th>Track Number</th>
-                </tr>
                 <tr th:class="${song.title}">
                     <td th:text="${song.title}" ></td>
                     <td th:text="${song.lengthSeconds}" ></td>
                     <td th:text="${song.trackNumber}"></td>
-                    <!-- <td>
-                        <form method="POST" th:action="${'album/' + album.id}/delete">
-                            <input type="hidden" th:value="${song.id}" name="id">
-                            <button>Delete Album</button>
+                    <td>
+                        <form method="POST" th:action="${album.id + '/delete'}">
+                            <input type="hidden" th:value="${song.id}" name="songId">
+                            <button>Delete Song</button>
                         </form>
-                    </td> -->
+                    </td>
                 </tr>
             </th:block>
         </table>
