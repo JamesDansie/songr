@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <link href="/styles.css" rel="stylesheet" />
+
+</head>
+<body>
+    <header>
+        <h4><a href="/">Home</a></h4>
+    </header>
+    <main>
+        <h1>
+            <!-- <span th:if="${album != null}" th:text="${album.title}"></span>
+            <span th:unless="${album != null}">interchangable album cog.</span> -->
+            <span th:text="${album.title}"></span>
+        </h1>
+        <img th:src="${album.imageUrl}">
+
+        <form action="${'album/' + album.id}" method="POST">
+            <div class="inputForm"><input type="text" name="songName">Song Name</div>
+            <div class="inputForm"></div><input type="number" name="trackLengthSeconds">Song Length (seconds)</div>
+            <div class="inputForm"></div><input type="number" name="trackNumber">Track Number</div>
+            <input type="hidden" th:value="${album.id}" name="id">
+            <div class="inputForm"></div><input type="submit" value="add song"></div>
+        </form>
+    </main>
+    <footer>
+        smells of feet
+    </footer>
+</body>
+</html>

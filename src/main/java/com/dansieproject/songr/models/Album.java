@@ -5,18 +5,46 @@ import java.util.List;
 
 @Entity
 public class Album {
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    @Id
+    public long id;
 
     @OneToMany(mappedBy = "album")
     List<Song> songs;
 
-    public String title;
-    public String artist;
-    public int songCount;
-    public int lengthSeconds;
-    public String imageUrl;
+    protected String title;
+    protected String artist;
+    protected int songCount;
+    protected int lengthSeconds;
+    protected String imageUrl;
+
+    public long getId() {
+        return id;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public int getSongCount() {
+        return songCount;
+    }
+
+    public int getLengthSeconds() {
+        return lengthSeconds;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public String getTitle(){
+        return this.title;
+    }
 
     public Album(){}
 
